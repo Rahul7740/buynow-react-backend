@@ -1,7 +1,8 @@
 import { DataTypes, Sequelize } from "sequelize";
 import UserModel from "../models/user.model.js";
+import ProductModel from "../models/products.model.js";
 
-const sequelize = new Sequelize("backend_Login_page", "root", "123456", {
+const sequelize = new Sequelize("buy_now_react", "root", "123456", {
     host: "localhost",
     dialect: "mysql"
 })
@@ -9,6 +10,7 @@ const sequelize = new Sequelize("backend_Login_page", "root", "123456", {
 
 const db = {}
 db.User = UserModel(sequelize, DataTypes)
+db.Products = ProductModel(sequelize,DataTypes)
 
 // Test database connection and sync models individually
 async function testAndSyncModels() {
@@ -20,6 +22,9 @@ async function testAndSyncModels() {
 
         await db.User.sync({ alter: true });
         console.log("User table synced successfully.");
+
+        await db.Products.sync({ alter: true });
+        console.log("Products table synced successfully.");
     } catch (error) { }
 }
 
