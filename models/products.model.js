@@ -9,8 +9,12 @@ const ProductModel = (sequelize, DataTypes) => {
     img: {
       type: DataTypes.STRING,
     },
-    ratting: true,
-    instock: true,
+    ratting: {
+      type: DataTypes.STRING,
+    },
+    instock: {
+      type: DataTypes.STRING,
+    },
   });
 };
 export default ProductModel;
